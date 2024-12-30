@@ -54,7 +54,7 @@ The simulation demonstrates the following:
 
 ## Author
 
-Peter D. Kaczorowski
+Piotr D. Kaczorowski
 
 ## License
 
