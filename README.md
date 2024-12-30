@@ -11,7 +11,7 @@ The goal of this project is to simulate the generation of a PAL carrier signal a
 - **`schematic.png`**: A schematic diagram of the circuit.
 - **`simulation.png`**: Transient analysis of the simulated circuit, showing key signals like `OSC`, `PALCARRIER`, and other test points.
 - **`README.md`**: This documentation file explaining the project.
-- **`INSTALL.md`**: This documentation file explaining the steps required to add the necessary crystal definitions to the standard MicroCap libraries.
+- **`INSTALL.md`**: This documentation file explaining the steps required to add the necessary crystal definitions.
 - **`microcap/`**: MicroCap simulation files.
 
 ## Circuit Details
