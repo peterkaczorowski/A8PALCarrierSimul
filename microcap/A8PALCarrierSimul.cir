@@ -7,7 +7,7 @@ Shape Version=11.00
 Screen=1920,1200
 MCAPVersion=12.2.0.3
 Key ID=Demo
-NLCnt=123
+NLCnt=124
 TXCnt=17
 
 [shapedef]
@@ -164,7 +164,7 @@ Name=Pulse Source
 Definition=Pulse source
 Shape=Pulse_Source
 Mask=4864
-Used=21
+Used=22
 memo=Pulse Source
 Label Offset=18,13,15,9
 PinCnt=2
@@ -298,6 +298,18 @@ PinCnt=2
 Pin="Plus",6,0,-5,-9
 Pin="Minus",0,0,-3,-9
 
+[compdef]
+Name=Xtal
+Definition=Macro
+Shape=Crystal
+Mask=4096
+Used=3
+memo=Crystal Macro
+Label Offset=17,10,11,9
+PinCnt=2
+Pin="plus",a,0,0,-4,-4
+Pin="minus",a,6,0,-3,-3
+
 [Circuit]
 Window Placement=0,3, -1,-1, -4,-36, 105,105,1490,670
 Default Object=Color=#000080,Pattern=Dash6
@@ -311,7 +323,7 @@ PowerFormat=3
 PathDelayFormat=3
 WarningFormat=3
 GridTextFormulaFormat=3
-Window Placement in Transient Analysis=0,3, -1,-1, 0,25, 1,0,825,841
+Window Placement in Transient Analysis=0,3, -1,-1, 0,25, 1,0,825,740
 SpiceType=AMBIGUOUS
 Title_Block_Border=None
 Title_Block=False
@@ -697,7 +709,8 @@ Pxs=520,496,544,496
 
 [Comp]
 Name=KDS_035_46
-Px=368,624
+Enable=FALSE
+Px=96,440
 
 [Attr]
 ON=14,-43,PART
@@ -751,9 +764,6 @@ Pxs=464,600,520,600
 
 [Wire]
 Pxs=312,648,312,728
-
-[Wire]
-Pxs=368,624,368,648
 
 [Wire]
 Pxs=520,600,520,648
@@ -1338,10 +1348,14 @@ V=V5
 
 [Attr]
 ON=-72,-59,MODEL
-V=PULSE
+V=PULSE_PAL44
 
 [Attr]
 ON=0,0,PACKAGE
+V
+
+[Attr]
+ON=0,14,USER1
 V
 
 [Comp]
@@ -1351,6 +1365,45 @@ Rot=7
 
 [Wire]
 Pxs=376,208,376,224
+
+[Comp]
+Name=Xtal
+Px=368,624
+
+[Attr]
+ON=15,-42,PART
+V=Y0
+Style=8192
+Height=-13
+
+[Attr]
+ON=17,35,FILE
+V=Xtal
+
+[Attr]
+ON=17,85,Param:F0
+V=3.546894MEG
+
+[Attr]
+ON=17,110,Param:R
+V=10
+
+[Attr]
+ON=17,135,Param:Q
+V=8K
+
+[Attr]
+ON=4,-23,DESC
+V=3.54 Mhz
+Style=8192
+Height=-13
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Wire]
+Pxs=368,624,368,648
 
 [Grid Text]
 Text="Main Clock and PAL Carrier Simulation for Atari 800XL PAL Computers"
@@ -1397,7 +1450,7 @@ JustifyV=Bottom
 CBorder=None
 
 [Grid Text]
-Text=".OPTIONS RELTOL=1E-1"
+Text=".OPTIONS RELTOL=1E-4"
 Px=96,328
 Height=-13
 Color=#008000
@@ -1405,7 +1458,6 @@ Font=Arial
 GridSnap=True
 JustifyH=Left
 JustifyV=Bottom
-Enable=FALSE
 CBorder=None
 
 [Grid Text]
@@ -1712,7 +1764,7 @@ Scale 0=1
 Scale 1=1
 Scale 2=1
 Scale 3=1
-Px=573,105
+Px=287,492
 WinBackGround Color=#FFFFFF
 Select Color=#FF0000
 Anchor Color=#000000
@@ -1776,7 +1828,6 @@ Type=Text
 Print=False
 Enable=True
 Name=Models
-SB 0=66,18
 Font=Height=-23,FStyle=0,Color=#000000,Name=Courier New
 Comment Color=#008000
 WinBackGround Color=#FFFFFF
@@ -1803,6 +1854,7 @@ Search Color=#FFFF00
 [Text Area]
 Section=0
 Page=1
+Text=.OPTIONS ITL4=50
 
 [Text Area]
 Section=0
@@ -1825,7 +1877,9 @@ Text=* A .cir file is typically found in the data directory
 Text=*
 Text=*** From file C:\MC12\library\UTILITY.LBR
 Text=*** 5V Pulse Source
-Text=.MODEL PULSE PUL (P1=0 P2=1n P3=112.883n P4=112.883n P5=225.765ns)
+Text=.MODEL PULSE PUL (P1=0 P2=1n P3=140.9685ns P4=140.9685ns P5=281.937ns)
+Text=
+Text=.MODEL PULSE_PAL44 PUL (P1=0 P2=1n P3=112.77n P4=112.77n P5=225.54n)
 
 [InfoPage]
 InfoPage=True
@@ -1844,13 +1898,13 @@ SimulationLog=True
 
 [Transient]
 WinID=1
-Window Placement=0,3, -1,-1, 0,25, 1,0,825,841
+Window Placement=0,3, -1,-1, 0,25, 1,0,825,740
 Font=Height=-23,FStyle=0,Color=#0000FF,Name=Arial
 WinBackGround Color=#FFFFFF
 Select Color=#FF0000
 Anchor Color=#000000
 Select Box Color=#000080
-Title
+Title=A8PALCarrierSimul.cir
 AutoTitle=Yes
 Grid Color=#808080
 Grid Weight=1
@@ -1909,7 +1963,7 @@ FFT_IncludeDCHarmonic=False
 FFT_AutoScale_Harmonics="10"
 PrinterAutoTile=No
 PrinterBlackBorder=No
-MonMaxShow=5
+MonMaxShow=6
 MonPageWidth=81
 MonPlotWidth=25
 MonExprXWidth=159
@@ -1946,6 +2000,9 @@ Num Out Font=Height=-23,FStyle=0,Color=#000000,Name=Courier New
 Num Out Format=3
 Num Out HideNonSelected=False
 Num Out UseActualDataPoints=False
+UserFileName="C:\MC12\DATA\A8PALCarrierSimul-PAL44.CSV"
+Wav SampleRate=11025
+Wav Nbits=16
 AutoSaveWave=False
 Wave Format=16E
 State Variables Format=5E
@@ -2079,8 +2136,8 @@ Seed=0
 
 [Limits]
 Analysis=Transient
-TMax=1000u
-TStart=500u
+TMax=1600u
+TStart=1100u
 TStep=0
 NPts=51
 Temp=27
@@ -2097,12 +2154,48 @@ Plt=1
 AliasID=3
 XExp=T
 YExp=v(OSC)
-XRng=0.001,0.0005
+XRng=0.0016,0.0011
 YRng=8,-2
 Options=LINEARX,LINEARY
 Range Grid X=0.0001
 Range Grid Y=2
+WSP Title="v(OSC) vs T"
+WSP Checked=True
+WSP NOP=247811
+WSP Save Actual Data=True
+WSP Wav Order=0
 Enable=Enable
+Line Color=#FF0000
+Text Color=#FF0000
+Rainbow=False
+VFmtX=3
+VFmtY=3
+ScaleFactorX="None"
+ScaleFactorY="None"
+ScaleUnitsX="Auto"
+ScaleUnitsY="Auto"
+SFmtX=2
+SFmtY=2
+NOFmtX=3E
+NOFmtY=3E
+
+[WaveForm]
+Analysis=Transient
+Plt=1
+AliasID=6
+XExp=T
+YExp=v(a8pal35_sqw)
+XRng=0.0016,0.0011
+YRng=7.5
+Options=LINEARX,LINEARY
+Range Grid X=0.0001
+Range Grid Y=1.5
+WSP Title="v(a8pal35_sqw) vs T"
+WSP Checked=True
+WSP NOP=247811
+WSP Save Actual Data=True
+WSP Wav Order=0
+Enable=DontRun
 Line Color=#FF0000
 Text Color=#FF0000
 Rainbow=False
@@ -2123,7 +2216,7 @@ Plt=1
 AliasID=1
 XExp=T
 YExp=v(TP1)
-XRng=0.001,0.0005
+XRng=0.0016,0.0011
 YRng=8,-2
 Options=LINEARX,LINEARY
 Range Grid X=0.0001
@@ -2149,7 +2242,7 @@ Plt=1
 AliasID=2
 XExp=T
 YExp=v(PALCARRIER)
-XRng=0.001,0.0005
+XRng=0.0016,0.0011
 YRng=8,-2
 Options=LINEARX,LINEARY
 Range Grid X=0.0001
@@ -2175,11 +2268,16 @@ Plt=2
 AliasID=5
 XExp=T
 YExp=v(PAL44_SQW)
-XRng=0.001,0.0005
+XRng=0.0016,0.0011
 YRng=7.5
 Options=LINEARX,LINEARY
 Range Grid X=0.0001
 Range Grid Y=1.5
+WSP Title="v(PAL44_SQW) vs T"
+WSP Checked=True
+WSP NOP=247811
+WSP Save Actual Data=True
+WSP Wav Order=0
 Enable=Enable
 Line Color=#909090
 Text Color=#909090
@@ -2201,7 +2299,7 @@ Plt=2
 AliasID=4
 XExp=T
 YExp=v(PALCARRIER)
-XRng=0.001,0.0005
+XRng=0.0016,0.0011
 YRng=7.5
 Options=LINEARX,LINEARY
 Range Grid X=0.0001

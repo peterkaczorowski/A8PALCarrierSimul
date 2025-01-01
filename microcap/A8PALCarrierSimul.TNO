@@ -3,12 +3,12 @@
 ***                                                                          ***
 ***                                                                          ***
 ***                 Transient Analysis of A8PALCarrierSimul                  ***
-***                           2024-12-30 09:38:43                            ***
+***                           2025-01-01 23:02:24                            ***
 ********************************************************************************
 Limits
 ======
-Maximum Run Time           1000u
-Output Start Time (tstart) 500u
+Maximum Run Time           1600u
+Output Start Time (tstart) 1100u
 Maximum Time Step          0
 Number of Points           51
 Temperature                Linear 27
@@ -40,8 +40,8 @@ A8PAL35_SQW           0.000   2                     3.839
 12                    0.000   13                  702.288m 
 PALCARRIER            1.898   15                  702.288m 
 16                  702.288m  PAL44_SQW             0.000  
-Y1.2                800.840m  Y1.4                800.840m 
 Y2.2                702.288m  Y2.4                702.288m 
+Y0.2                800.840m  Y0.4                800.840m 
 $G_DPWR               5.000   $G_DGND               0.000  
 U21A.X6$.1            1.569   U21A.X6$.2D           1.569  
 U21A.X6$.2            1.569   U21A.X8$.1            5.000  
@@ -51,8 +51,8 @@ U21B.X9$.DPWROFF      5.000   U21B.X9$.DGNDOFF     84.992u
 DC Operating Point Inductor Current
 ===================================
         Inductor     Current          Inductor     Current 
-L8                    0.000   Y1.L1                 0.000  
-Y2.L1                 0.000  
+L8                    0.000   Y2.L1                 0.000  
+Y0.L1                 0.000  
 
 DC Operating Point Digital States
 =================================
@@ -289,7 +289,7 @@ tc1                         0.000                0.000                0.000
 tc2                         0.000                0.000                0.000 
 
 
-Instance:                    Y1.R2                Y2.R2          U21A.X6$.R1
+Instance:                    Y2.R2                Y0.R2          U21A.X6$.R1
 V                           0.000                0.000             -186.278p
 Power DC Terms:
 PD                          0.000                0.000            3.470E-022
@@ -357,7 +357,7 @@ tc2                         0.000                0.000                0.000
 
 Operating Point for Devices of Type Inductor
 ============================================
-Instance:                       L8                Y1.L1                Y2.L1
+Instance:                       L8                Y2.L1                Y0.L1
 V                           0.000                0.000                0.000 
 Power DC Terms:
 PS                          0.000                0.000                0.000 
@@ -396,8 +396,8 @@ Device Variables:
 ic                          0.000                0.000                0.000 
 
 
-Instance:               Y1.CSERIES              Y1.CPAR           Y2.CSERIES
-V                           3.039               -3.039             -702.288m
+Instance:               Y2.CSERIES              Y2.CPAR           Y0.CSERIES
+V                        -702.288m             702.288m               3.039 
 Power DC Terms:
 PS                          0.000                0.000                0.000 
 
@@ -408,8 +408,8 @@ Device Variables:
 ic                          0.000                0.000                0.000 
 
 
-Instance:                  Y2.CPAR          U21A.X6$.C1          U21A.X6$.C2
-V                         702.288m               1.569                1.569 
+Instance:                  Y0.CPAR          U21A.X6$.C1          U21A.X6$.C2
+V                          -3.039                1.569                1.569 
 Power DC Terms:
 PS                          0.000                0.000                0.000 
 
@@ -436,7 +436,7 @@ ic                          0.000                0.000                0.000
 Operating Point for Devices of Type Pulse
 =========================================
 Instance:                       V1                   V5
-Using model:                 PULSE                PULSE
+Using model:                 PULSE          PULSE_PAL44
 V                           0.000                0.000 
 Power DC Terms:
 PG                          0.000                0.000 
@@ -468,4 +468,11 @@ PG                      -184.123p            -169.968p
 DC Pin Currents:
 ISource                    1.919u               2.000u
 
+
+
+Digital Warning
+Width low violation at t=0.000414307
+Device U21A.U3
+Minimum low width is 1.5e-008
+Node D, measured width was 8.9104e-009
 
