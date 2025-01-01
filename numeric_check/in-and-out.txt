@@ -1,0 +1,14 @@
+$ alias r='python3 run7.py'
+
+$ r A8PALCarrierSimul-PAL35.CSV
+Frequency: 3.546892 MHz
+
+$ r A8PALCarrierSimul-PAL44.CSV
+Frequency: 4.433803 MHz
+
+$ r A8PALCarrierSimul-OSC.CSV
+Frequency: 3.541128 MHz
+
+$ r A8PALCarrierSimul-PALCARRIER.CSV
+Frequency: 4.426405 MHz
+
