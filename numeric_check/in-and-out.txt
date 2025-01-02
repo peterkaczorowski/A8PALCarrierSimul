@@ -1,5 +1,8 @@
 $ alias r='python3 run7.py'
 
+$ r A8PALCarrierSimul-1MEG.CSV
+Frequency: 1.000000 MHz
+
 $ r A8PALCarrierSimul-PAL35.CSV
 Frequency: 3.546892 MHz
 

@@ -9,11 +9,11 @@ if len(sys.argv) < 2:
 
 # Load the CSV file
 file_path = sys.argv[1]
-data = pd.read_csv(file_path, skiprows=6, header=None, names=["T", "v(OSC)"], low_memory=False)  # Skip the header lines until the data starts
+data = pd.read_csv(file_path, skiprows=6, header=None, names=["T", "V"], low_memory=False)  # Skip the header lines until the data starts
 
 # Extract time (T) and signal (v(OSC))
 time = data['T'].values
-signal = data['v(OSC)'].values
+signal = data['V'].values
 
 # Calculate the amplitude midpoint
 amplitude_midpoint = (np.max(signal) + np.min(signal)) / 2
